@@ -1,0 +1,35 @@
+# hello_qt6.py
+# Python + Qt6 基本範例
+
+import sys
+from PySide6.QtWidgets import QApplication, QPushButton, QMessageBox, QWidget, QVBoxLayout
+
+
+def on_button_click():
+    QMessageBox.information(window, "訊息", "Hello, Qt6!")
+
+
+# 建立應用程式
+app = QApplication(sys.argv)
+
+# 建立主視窗
+window = QWidget()
+window.setWindowTitle("Hello Qt6 範例")
+window.resize(300, 200)
+
+# 建立按鈕
+button = QPushButton("點我")
+button.clicked.connect(on_button_click)
+
+# 版面配置
+layout = QVBoxLayout(window)
+layout.addWidget(button)
+
+window.show()
+
+# 啟動應用程式主迴圈
+sys.exit(app.exec())
+
+
+
+  
