@@ -1,0 +1,6 @@
+from PySide6.QtWidgets import QMainWindow, QLabel
+
+main_win = QMainWindow()
+main_win.setWindowTitle("我的主視窗")
+main_win.setCentralWidget(QLabel("中央元件"))
+main_win.show()
