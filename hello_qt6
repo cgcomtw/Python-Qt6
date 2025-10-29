@@ -1,35 +1,40 @@
-# hello_qt6.py
-# Python + Qt6 基本範例
-
 import sys
-from PySide6.QtWidgets import QApplication, QPushButton, QMessageBox, QWidget, QVBoxLayout
-
+from PySide6.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout,
+    QPushButton, QMessageBox, QLineEdit, QLabel
+)
 
 def on_button_click():
-    QMessageBox.information(window, "訊息", "Hello, Qt6!")
+    text = input_box.text()
+    if text.strip():
+        QMessageBox.information(window, "輸入的內容", f"你輸入了：{text}")
+    else:
+        QMessageBox.warning(window, "提醒", "請輸入文字！")
 
-
-# 建立應用程式
 app = QApplication(sys.argv)
 
-# 建立主視窗
+# 主視窗
 window = QWidget()
-window.setWindowTitle("Hello Qt6 範例")
-window.resize(300, 200)
+window.setWindowTitle("Qt6 輸入框範例")
+window.resize(300, 160)
 
-# 建立按鈕
-button = QPushButton("點我")
+# 標籤
+label = QLabel("請輸入文字：")
+
+# 輸入框
+input_box = QLineEdit()
+input_box.setPlaceholderText("在這裡輸入...")
+
+# 按鈕
+button = QPushButton("顯示輸入內容")
 button.clicked.connect(on_button_click)
 
 # 版面配置
 layout = QVBoxLayout(window)
+layout.addWidget(label)
+layout.addWidget(input_box)
 layout.addWidget(button)
 
 window.show()
 
-# 啟動應用程式主迴圈
 sys.exit(app.exec())
-
-
-
-  
