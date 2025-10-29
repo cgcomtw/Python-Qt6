@@ -1,0 +1,10 @@
+from PySide6.QtWidgets import QMainWindow, QShortcut
+from PySide6.QtGui import QKeySequence
+
+main_win = QMainWindow()
+
+# 綁定 F11 為快速鍵
+shortcut = QShortcut(QKeySequence("F11"), main_win)
+shortcut.activated.connect(lambda: print("F11 被按下了！"))
+
+main_win.show()
